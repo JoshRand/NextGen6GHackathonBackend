@@ -6,17 +6,17 @@ import java.util.List;
 public class User {
 	
 	private Account account;
-	private String currentRoute;
-	private List<String> sessions;
+	private Route currentRoute;
+	private List<Session> sessions;
 	
 	public User(Account account) {
 		super();
 		this.account = account;
-		this.currentRoute = "";
-		this.sessions = new ArrayList<String>();
+		this.currentRoute = new Route();
+		this.sessions = new ArrayList<Session>();
 	}
 	
-	public User(Account account, String currentRoute, List<String> sessions) {
+	public User(Account account, Route currentRoute, List<Session> sessions) {
 		super();
 		this.account = account;
 		this.currentRoute = currentRoute;
@@ -31,19 +31,19 @@ public class User {
 		this.account = account;
 	}
 
-	public String getCurrentRoute() {
+	public Route getCurrentRoute() {
 		return currentRoute;
 	}
 
-	public void setCurrentRoute(String currentRoute) {
+	public void setCurrentRoute(Route currentRoute) {
 		this.currentRoute = currentRoute;
 	}
 
-	public List<String> getSessions() {
+	public List<Session> getSessions() {
 		return sessions;
 	}
 
-	public void setSessions(List<String> sessions) {
+	public void setSessions(List<Session> sessions) {
 		this.sessions = sessions;
 	}
 
