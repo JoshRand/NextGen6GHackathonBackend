@@ -25,7 +25,6 @@ public class AccountController
 	@PostMapping("/register")
 	public ResponseEntity<Account> createAccount( @RequestBody Account account)
 	{
-		
 		System.out.println(account.toString());
 		if(accountService.accountExists(account.getEmail()))
 		{
@@ -36,11 +35,6 @@ public class AccountController
 			Account acc = new Account(account.getEmail(),"",account.getTotalScore());
 			accountService.addAccount(account);
 			return new ResponseEntity<Account>(acc,HttpStatus.CREATED);
-		}
-		
+		}	
 	}
-	
-	
-	
-	
 }

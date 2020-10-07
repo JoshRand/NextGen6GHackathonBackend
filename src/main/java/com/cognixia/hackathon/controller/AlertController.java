@@ -1,6 +1,7 @@
 package com.cognixia.hackathon.controller;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AlertController {
 	DistractionRepository distractionRepo;
 	
 		@GetMapping("/distracted")
-		public ResponseEntity<Distraction> getSignal (Point coords) {
+		public ResponseEntity<Distraction> getSignal (Point2D.Float coords) {
 			Distraction distraction = new Distraction(LocalDateTime.now(), null, coords);
 			return new ResponseEntity<Distraction>(distraction, HttpStatus.CREATED);
 		}

@@ -1,15 +1,16 @@
 package com.cognixia.hackathon.models;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 
 public class Distraction {
 	
 	private LocalDateTime distractionTimeStart;
 	private LocalDateTime distractionTimeEnd;
-	private Point distractionCoords;
+	private Point2D.Float distractionCoords;
 	
-	public Distraction(LocalDateTime distractionTimeStart, LocalDateTime distractionTimeEnd, Point distractionCoords) {
+	public Distraction(LocalDateTime distractionTimeStart, LocalDateTime distractionTimeEnd, Point2D.Float distractionCoords) {
 		super();
 		this.distractionTimeStart = distractionTimeStart;
 		this.distractionTimeEnd = distractionTimeEnd;
@@ -32,11 +33,11 @@ public class Distraction {
 		this.distractionTimeEnd = distractionTimeEnd;
 	}
 
-	public Point getDistractionCoords() {
+	public Point2D.Float  getDistractionCoords() {
 		return distractionCoords;
 	}
 
-	public void setDistractionCoords(Point distractionCoords) {
+	public void setDistractionCoords(Point2D.Float  distractionCoords) {
 		this.distractionCoords = distractionCoords;
 	}
 
