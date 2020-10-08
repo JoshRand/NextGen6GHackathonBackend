@@ -28,13 +28,12 @@ public class AccountController
 		System.out.println(account.toString());
 		if(accountService.accountExists(account.getEmail()))
 		{
-			return null;
+			return new ResponseEntity<Account>(new Account("",""),HttpStatus.CONFLICT);
 		}
 		else
 		{
-			Account acc = new Account(account.getEmail(),"",account.getTotalScore());
 			accountService.addAccount(account);
-			return new ResponseEntity<Account>(acc,HttpStatus.CREATED);
+			return new ResponseEntity<Account>(new Account(account.getEmail(),"",account.getTotalScore()),HttpStatus.CREATED);
 		}	
 	}
 }
