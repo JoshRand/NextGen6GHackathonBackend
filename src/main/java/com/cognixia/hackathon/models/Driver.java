@@ -1,6 +1,18 @@
 package com.cognixia.hackathon.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "driver")
 public class Driver {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "driver_id")
+	private Integer driverId;
 	
 	private String name;
 	private String driverLicense;

@@ -3,24 +3,37 @@ package com.cognixia.hackathon.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "user")
 public class User {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "user_id")
+	private Integer userId;
+	
+	@ManyToOne(targetEntity = Account.class)
 	private Account account;
+	
+	@ManyToOne(targetEntity = Route.class)
 	private Route currentRoute;
-	private List<Session> sessions;
 	
 	public User(Account account) {
 		super();
 		this.account = account;
 		this.currentRoute = new Route();
-		this.sessions = new ArrayList<Session>();
 	}
 	
 	public User(Account account, Route currentRoute, List<Session> sessions) {
 		super();
 		this.account = account;
 		this.currentRoute = currentRoute;
-		this.sessions = sessions;
 	}
 
 	public Account getAccount() {
@@ -39,16 +52,8 @@ public class User {
 		this.currentRoute = currentRoute;
 	}
 
-	public List<Session> getSessions() {
-		return sessions;
-	}
-
-	public void setSessions(List<Session> sessions) {
-		this.sessions = sessions;
-	}
-
 	@Override
 	public String toString() {
-		return "User [account=" + account + ", currentRoute=" + currentRoute + ", sessions=" + sessions + "]";
+		return "User [account=" + account + ", currentRoute=" + currentRoute + "]";
 	}
 }

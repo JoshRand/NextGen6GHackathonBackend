@@ -3,7 +3,19 @@ package com.cognixia.hackathon.models;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "haz")
 public class HighAccidentZone {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "haz_id")
+	private Integer hazId;
 	
 	private Point2D.Float center;
 	private float radius;

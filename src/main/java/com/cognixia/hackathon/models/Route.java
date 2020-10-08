@@ -2,10 +2,22 @@ package com.cognixia.hackathon.models;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Entity(name = "route")
 public class Route
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "route_id")
+	private Integer routeId;
+	
 	private LocalDateTime startTime;
 	private LocalDateTime eta;
 	private int distance;

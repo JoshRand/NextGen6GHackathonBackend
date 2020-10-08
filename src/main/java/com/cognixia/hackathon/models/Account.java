@@ -1,6 +1,18 @@
 package com.cognixia.hackathon.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "account")
 public class Account {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "account_id")
+	private Integer accountId;
 	
 	private String email;
 	private String password;
