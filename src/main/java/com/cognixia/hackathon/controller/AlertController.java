@@ -44,13 +44,12 @@ public class AlertController {
 		
 		@GetMapping("/highaccidentzone")
 		public ResponseEntity<Boolean> inHAZ (Point2D.Float coords) {
-			boolean inHaz = false;
 			for(HighAccidentZone haz: hazRepo.findAll()) {
 				if(haz.inArea(coords)) {
-					inHaz = true;
+					return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 				}
 			}
-			return new ResponseEntity<Boolean>(inHaz, HttpStatus.OK);
+			return new ResponseEntity<Boolean>(false, HttpStatus.OK);
 		}
 
 }
