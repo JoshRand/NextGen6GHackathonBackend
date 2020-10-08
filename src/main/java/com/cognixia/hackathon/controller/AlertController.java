@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cognixia.hackathon.models.Distraction;
+import com.cognixia.hackathon.models.Driver;
 import com.cognixia.hackathon.models.HighAccidentZone;
 import com.cognixia.hackathon.repositories.DistractionRepository;
 import com.cognixia.hackathon.repositories.HAZRepository;
@@ -29,8 +30,8 @@ public class AlertController {
 	HAZRepository hazRepo;
 	
 		@GetMapping("/distracted")
-		public ResponseEntity<Distraction> getSignal (Point2D.Float coords) {
-			Distraction distraction = new Distraction(LocalDate.now(), LocalTime.now(), null, coords);
+		public ResponseEntity<Distraction> getSignal (Point2D.Float coords, Driver driver) {
+			Distraction distraction = new Distraction(LocalDate.now(), LocalTime.now(), null, coords, driver);
 			return new ResponseEntity<Distraction>(distraction, HttpStatus.CREATED);
 		}
 		

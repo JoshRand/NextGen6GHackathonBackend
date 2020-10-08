@@ -8,13 +8,11 @@ import java.time.LocalTime;
 
 public class Distraction {
 	
-//	private LocalDateTime distractionTimeStart;
-//	private LocalDateTime distractionTimeEnd;
-	
 	private LocalDate distractionDate;
 	private LocalTime distractionTimeStart;
 	private LocalTime distractionTimeEnd;
 	private Point2D.Float distractionCoords;
+	private Driver driverInvolved;
 	
 	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
 			Float distractionCoords) {
@@ -23,6 +21,17 @@ public class Distraction {
 		this.distractionTimeStart = distractionTimeStart;
 		this.distractionTimeEnd = distractionTimeEnd;
 		this.distractionCoords = distractionCoords;
+		this.driverInvolved = null;
+	}
+	
+	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
+			Float distractionCoords, Driver driverInvolved) {
+		super();
+		this.distractionDate = distractionDate;
+		this.distractionTimeStart = distractionTimeStart;
+		this.distractionTimeEnd = distractionTimeEnd;
+		this.distractionCoords = distractionCoords;
+		this.driverInvolved = driverInvolved;
 	}
 
 	public LocalDate getDistractionDate() {
@@ -55,6 +64,14 @@ public class Distraction {
 
 	public void setDistractionCoords(Point2D.Float distractionCoords) {
 		this.distractionCoords = distractionCoords;
+	}
+
+	public Driver getDriverInvolved() {
+		return driverInvolved;
+	}
+
+	public void setDriverInvolved(Driver driverInvolved) {
+		this.driverInvolved = driverInvolved;
 	}
 
 }
