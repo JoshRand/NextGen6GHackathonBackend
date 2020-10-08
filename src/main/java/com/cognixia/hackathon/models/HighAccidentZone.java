@@ -39,13 +39,12 @@ public class HighAccidentZone {
 		this.radius = radius;
 	}
 	
-	// TODO: Update to check circle, not square area
 	public boolean inArea(Point2D.Float coords) {
-		if ((coords.x <= this.center.x + radius || coords.x >= this.center.x - radius)
-		&& (coords.y <= this.center.y + radius || coords.y >= this.center.y - radius)) {
+	
+		if(radius*radius >= (coords.x - this.center.x)*(coords.x - this.center.x) + (coords.y - this.center.y)*(coords.y - this.center.y))
+		{
 			return true;
 		}
-		
 		return false;
 	}
 
