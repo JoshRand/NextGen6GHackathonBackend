@@ -23,28 +23,31 @@ public class Distraction {
 	private LocalDate distractionDate;
 	private LocalTime distractionTimeStart;
 	private LocalTime distractionTimeEnd;
-	private Point2D.Float distractionCoords;
+	private float distractionLongitude;
+	private float distractionLatitude;
 	
 	@ManyToOne(targetEntity = Driver.class)
 	private Driver driverInvolved;
 	
 	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
-			Float distractionCoords) {
+			float distractionLongitude, float distractionLatitude) {
 		super();
 		this.distractionDate = distractionDate;
 		this.distractionTimeStart = distractionTimeStart;
 		this.distractionTimeEnd = distractionTimeEnd;
-		this.distractionCoords = distractionCoords;
+		this.distractionLongitude = distractionLongitude;
+		this.distractionLatitude = distractionLatitude;
 		this.driverInvolved = null;
 	}
 	
 	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
-			Float distractionCoords, Driver driverInvolved) {
+			float distractionLongitude, float distractionLatitude, Driver driverInvolved) {
 		super();
 		this.distractionDate = distractionDate;
 		this.distractionTimeStart = distractionTimeStart;
 		this.distractionTimeEnd = distractionTimeEnd;
-		this.distractionCoords = distractionCoords;
+		this.distractionLongitude = distractionLongitude;
+		this.distractionLatitude = distractionLatitude;
 		this.driverInvolved = driverInvolved;
 	}
 
@@ -72,12 +75,20 @@ public class Distraction {
 		this.distractionTimeEnd = distractionTimeEnd;
 	}
 
-	public Point2D.Float getDistractionCoords() {
-		return distractionCoords;
+	public float getDistractionLongitude() {
+		return distractionLongitude;
 	}
 
-	public void setDistractionCoords(Point2D.Float distractionCoords) {
-		this.distractionCoords = distractionCoords;
+	public void setDistractionLongitude(float distractionLongitude) {
+		this.distractionLongitude = distractionLongitude;
+	}
+
+	public float getDistractionLatitude() {
+		return distractionLatitude;
+	}
+
+	public void setDistractionLatitude(float distractionLatitude) {
+		this.distractionLatitude = distractionLatitude;
 	}
 
 	public Driver getDriverInvolved() {

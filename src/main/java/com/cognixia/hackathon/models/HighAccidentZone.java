@@ -17,21 +17,33 @@ public class HighAccidentZone {
 	@Column(name = "haz_id")
 	private Integer hazId;
 	
-	private Point2D.Float center;
+	private float centerLongitude;
+	private float centerLatitude;
 	private float radius;
 	
-	public HighAccidentZone(Float center, float radius) {
+	public HighAccidentZone(float centerLongitude, float centerLatitude, float radius) {
 		super();
-		this.center = center;
+		this.centerLongitude = centerLongitude;
+		this.centerLatitude = centerLatitude;
 		this.radius = radius;
 	}
 	
-	public Point2D.Float getCenter() {
-		return center;
+	public float getCenterLongitude() {
+		return centerLongitude;
 	}
-	public void setCenter(Point2D.Float center) {
-		this.center = center;
+
+	public void setCenterLongitude(float centerLongitude) {
+		this.centerLongitude = centerLongitude;
 	}
+
+	public float getCenterLatitude() {
+		return centerLatitude;
+	}
+
+	public void setCenterLatitude(float centerLatitude) {
+		this.centerLatitude = centerLatitude;
+	}
+
 	public float getRadius() {
 		return radius;
 	}
@@ -39,9 +51,10 @@ public class HighAccidentZone {
 		this.radius = radius;
 	}
 	
-	public boolean inArea(Point2D.Float coords) {
+	public boolean inArea(float longitude, float latitude) {
 	
-		if(radius*radius >= (coords.x - this.center.x)*(coords.x - this.center.x) + (coords.y - this.center.y)*(coords.y - this.center.y))
+		if(radius*radius >= (longitude - this.centerLongitude)*(longitude - this.centerLongitude)
+				+ (latitude - this.centerLatitude)*(latitude - this.centerLatitude))
 		{
 			return true;
 		}
