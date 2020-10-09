@@ -70,5 +70,11 @@ public class AlertController {
 			}
 			return new ResponseEntity<Boolean>(false, HttpStatus.OK);
 		}
+		
+		@PostMapping("/highaccidentzone/add")
+		public ResponseEntity<String> addHAZ (@RequestParam float longitude, @RequestParam float latitude, @RequestParam float radius) {
+			hazRepo.save(new HighAccidentZone(longitude, latitude, radius));
+			return new ResponseEntity<String>("High accident zone added", HttpStatus.CREATED);
+		}
 
 }
