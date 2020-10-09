@@ -19,6 +19,10 @@ public class Driver {
 	private String carMake;
 	private String carModel;
 	
+	public Driver() {
+		
+	}
+	
 	public Driver(String name, String driverLicense, String carMake, String carModel) {
 		super();
 		this.name = name;

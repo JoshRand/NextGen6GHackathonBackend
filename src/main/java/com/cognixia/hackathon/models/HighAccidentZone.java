@@ -21,6 +21,10 @@ public class HighAccidentZone {
 	private float centerLatitude;
 	private float radius;
 	
+	public HighAccidentZone() {
+		
+	}
+	
 	public HighAccidentZone(float centerLongitude, float centerLatitude, float radius) {
 		super();
 		this.centerLongitude = centerLongitude;

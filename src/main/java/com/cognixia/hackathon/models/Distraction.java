@@ -1,7 +1,5 @@
 package com.cognixia.hackathon.models;
 
-import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -28,6 +26,10 @@ public class Distraction {
 	
 	@ManyToOne(targetEntity = Driver.class)
 	private Driver driverInvolved;
+	
+	public Distraction() {
+		
+	}
 	
 	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
 			float distractionLongitude, float distractionLatitude) {

@@ -38,13 +38,13 @@ public class AlertController {
 				@RequestParam String driverName, @RequestParam String driverLicense, @RequestParam String carMake, @RequestParam String carModel) {
 			Driver driverDetails = new Driver(driverName, driverLicense, carMake, carModel);
 			Distraction distraction = new Distraction(LocalDate.now(), LocalTime.now(), null, distractLong, distractLat, driverDetails);
-			driverRepo.save(driverDetails);
 			return new ResponseEntity<Distraction>(distraction, HttpStatus.CREATED);
 		}
 		
 		@PostMapping("/distracted")
 		public ResponseEntity<Distraction> endDistraction (@RequestBody Distraction distraction) {
 			distraction.setDistractionTimeEnd(LocalTime.now());
+			driverRepo.save(distraction.getDriverInvolved());
 			distractionRepo.save(distraction);
 			return new ResponseEntity<Distraction>(HttpStatus.OK);
 		}
