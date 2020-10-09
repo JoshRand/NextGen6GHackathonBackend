@@ -32,19 +32,31 @@ public class AlertController {
 	DriverRepository driverRepo;
 	@Autowired
 	HAZRepository hazRepo;
-	
+		@GetMapping("/TestDriver")
+		public ResponseEntity<Driver> generateTestDriver () {
+			
+			Driver testDriver = new Driver("TestDriver","123456","Ford","Mustang");
+			for (Driver driver: driverRepo.findAll())
+			{
+				if(driver.getName().equalsIgnoreCase(testDriver.getName()))
+				{
+					return new ResponseEntity<Driver>(HttpStatus.ALREADY_REPORTED);
+				}
+			}
+			driverRepo.save(testDriver);
+			return new ResponseEntity<Driver>(testDriver, HttpStatus.CREATED);
+			
+		}
 		@GetMapping("/distracted")
 		public ResponseEntity<Distraction> getSignal (@RequestParam float distractLong, @RequestParam float distractLat, 
-				@RequestParam String driverName, @RequestParam String driverLicense, @RequestParam String carMake, @RequestParam String carModel) {
-			Driver driverDetails = new Driver(driverName, driverLicense, carMake, carModel);
-			Distraction distraction = new Distraction(LocalDate.now(), LocalTime.now(), null, distractLong, distractLat, driverDetails);
+				@RequestParam Integer driver_id) {
+			Distraction distraction = new Distraction(LocalDate.now(), LocalTime.now(), null, distractLong, distractLat, driver_id);
 			return new ResponseEntity<Distraction>(distraction, HttpStatus.CREATED);
 		}
 		
 		@PostMapping("/distracted")
 		public ResponseEntity<Distraction> endDistraction (@RequestBody Distraction distraction) {
 			distraction.setDistractionTimeEnd(LocalTime.now());
-			driverRepo.save(distraction.getDriverInvolved());
 			distractionRepo.save(distraction);
 			return new ResponseEntity<Distraction>(HttpStatus.OK);
 		}

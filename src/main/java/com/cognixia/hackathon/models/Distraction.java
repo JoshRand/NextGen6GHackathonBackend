@@ -24,8 +24,7 @@ public class Distraction {
 	private float distractionLongitude;
 	private float distractionLatitude;
 	
-	@ManyToOne(targetEntity = Driver.class)
-	private Driver driverInvolved;
+	private Integer driver_id;
 	
 	public Distraction() {
 		
@@ -39,18 +38,18 @@ public class Distraction {
 		this.distractionTimeEnd = distractionTimeEnd;
 		this.distractionLongitude = distractionLongitude;
 		this.distractionLatitude = distractionLatitude;
-		this.driverInvolved = null;
+		this.driver_id = null;
 	}
 	
 	public Distraction(LocalDate distractionDate, LocalTime distractionTimeStart, LocalTime distractionTimeEnd,
-			float distractionLongitude, float distractionLatitude, Driver driverInvolved) {
+			float distractionLongitude, float distractionLatitude, Integer driverId) {
 		super();
 		this.distractionDate = distractionDate;
 		this.distractionTimeStart = distractionTimeStart;
 		this.distractionTimeEnd = distractionTimeEnd;
 		this.distractionLongitude = distractionLongitude;
 		this.distractionLatitude = distractionLatitude;
-		this.driverInvolved = driverInvolved;
+		this.driver_id = driverId;
 	}
 
 	public LocalDate getDistractionDate() {
@@ -93,12 +92,12 @@ public class Distraction {
 		this.distractionLatitude = distractionLatitude;
 	}
 
-	public Driver getDriverInvolved() {
-		return driverInvolved;
+	public Integer getDriver_id() {
+		return driver_id;
 	}
 
-	public void setDriverInvolved(Driver driverInvolved) {
-		this.driverInvolved = driverInvolved;
+	public void setDriver_id(Integer driver_id) {
+		this.driver_id = driver_id;
 	}
 
 }
