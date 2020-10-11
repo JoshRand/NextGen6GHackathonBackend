@@ -4,6 +4,7 @@ import java.awt.geom.Point2D;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,6 +76,11 @@ public class AlertController {
 		public ResponseEntity<String> addHAZ (@RequestParam float longitude, @RequestParam float latitude, @RequestParam float radius) {
 			hazRepo.save(new HighAccidentZone(longitude, latitude, radius));
 			return new ResponseEntity<String>("High accident zone added", HttpStatus.CREATED);
+		}
+		
+		@GetMapping("highaccidentzone/all")
+		public List<HighAccidentZone> getAllHAZ () {
+			return hazRepo.findAll();
 		}
 
 }
